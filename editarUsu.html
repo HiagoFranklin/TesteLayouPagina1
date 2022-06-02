@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Editar</title>
+
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+
+
+<style>
+	
+	.info{
+	
+	width: 60px;
+	background-color: #52F238;
+	}
+
+	.imgLogin{
+    width: 25px;
+    height: 25px;
+    border-radius: 34px;
+    
+    }
+    
+    ul{
+	 margin: 0;
+	 float: right;
+	 list-style: none;
+	 width: 25px;
+	 height: 25px;
+	 margin-right: 70px;
+	
+	}
+	
+	li ul{
+	
+	display: none;
+	 padding:0px;
+	margin-right: 0px;
+	}
+	
+	ul li a {
+	
+	display: block;
+	 text-decoration: none;
+	
+	}
+    
+     ul li {
+	position: relative;
+
+	}
+	li:hover ul.nivel1 {
+		display: block;
+		}
+		
+	ul.nivel1 li:hover ul.nivel2 {
+		display: block;
+	}
+	
+
+	.botaoLogar{
+    margin-left: 190px;
+    margin-top: 20px;
+    background-color: #44a43c;
+    height: 50px;
+  	width: 300px;
+    border-radius: 10px;
+    
+    }
+    
+    .botaoLogar:hover{
+    background-color: green;
+    }
+
+	.h4Button{
+	color: white;
+	margin-top: 7px;
+	}
+
+.sidebar{
+	display: none;
+	}
+	
+	.navbar-toggler-icon{
+	display: none;
+	}
+	
+	
+	
+	#divBusca{
+	display: none;
+	}
+
+.inputFoto{
+margin-left: 45px;
+width: 120px;
+border-radius: 20px;
+margin-top: 10px;
+}
+
+#imgPerfil{
+margin-left: 30px;
+border-radius: 70px;
+	width: 140px;
+	border: solid white	;
+	
+}
+
+#divFoto{
+float: left;
+}
+
+#divFormEditar{
+background: #37a626;
+height: 450px;
+border-radius: 20px;
+width: 690px;
+margin-top: 50px;
+margin-left: 50px;
+border: white solid;
+}
+
+.divForm2{
+  margin-left: 280px;
+  background-color: white;
+  border:solid 2px #fffff;
+  height: 50px;
+  width: 300px;
+  border-radius: 10px;
+  
+}
+.divForm3{
+  margin-left: 350px;
+  background-color: white;
+  border:solid 2px #fffff;
+  height: 50px;
+  width: 300px;
+  border-radius: 10px;
+  	
+}
+.divForm4{
+  margin-left: 280px;
+  background-color: white;
+  border:solid 2px #fffff;
+  height: 50px;
+  width: 300px;
+  border-radius: 10px;
+  	
+}
+.txtForms{
+  margin-top: 10px;
+  float: left;
+  background-color:transparent;
+  padding-left:5px;
+  font-size:18px;
+  border:none;
+  height:32px;
+  width:250px;
+}
+
+.h4{
+float: left;
+color: white;
+margin-top: 17px;
+margin-left: 20px;
+}
+
+.imgLapis{
+width: 20px;
+margin-top: 15px;
+margin-left: 20px;
+}
+
+.divForm5{
+  margin-left: 280px;
+  background-color: white;
+  border:solid 2px #fffff;
+  height: 50px;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.divForm6{
+  margin-left: 280px;
+  background-color: white;
+  border:solid 2px #fffff;
+  height: 50px;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.h4Senha{
+float: left;
+color: white;
+
+margin-left: 200px;
+}
+</style>
+</head>
+<body background="@{'public/imagens/fundoTela.png'}">
+	
+	<div id="Cabecalho">
+    	<div id=loginPerfil>
+    	<ul>
+    	<li><a href="#"><img class="imgLogin" src="@{'public/images/images.png'}"></a>
+    		<ul class="nivel1">
+    			<li class="info"><a href="@{pagina1.pg1}"><span>Voltar</span></a></li>
+    			<li class="info"><a href="@{Login.sair}"><ion-icon name="log-out-outline"></ion-icon><span>Sair</span></a></li>
+    	</ul>
+    	</li>
+    	</ul>
+    	</div>
+    	</div>
+	
+	
+	
+	
+	<form action="@{Usuarios.salvar}" method="post">
+	<div id="divFormEditar">
+	<input type="hidden" name="usuario.id" value="${usuario?.id}">
+	
+	<div id="divFoto">
+	<h4 class="h4" style="margin-left: 50px;">Foto de Perfil</h4>
+	<br/>
+	<img src="../uploads/${session.get('usuario.id')}/${session.get('usuario.nomeFoto')}" id="imgPerfil" style="width: 150px; height: 150px;"><br/>
+	<input class="inputFoto" type="file"  name="foto" id="imagem" onchange="previewImagem()">
+	</div>
+	<br/>
+	<h4 class="h4">Nome</h4>
+	<div class="divForm2">
+	<input type="text" class="txtForms" name="nomeEditar" >
+	<img class="imgLapis" src="@{'public/imagens/imglapisEditar.png'}">
+	</div>
+	
+	<br/>
+	<h4 class="h4">Sobrenome</h4>
+	<div class="divForm3">
+	<input type="text" class="txtForms" name="sobrenomeEditar" >
+	<img class="imgLapis" src="@{'public/imagens/imglapisEditar.png'}">
+	</div>
+	<br/>
+	<h4 class="h4">Email</h4>
+	<div class="divForm4">
+	<input type="text" class="txtForms" name="emailEditar" >
+	<img class="imgLapis" src="@{'public/imagens/imglapisEditar.png'}">
+	</div>
+	<br/>
+	<h4 class="h4Senha">Senha</h4>
+	<div class="divForm5">
+	<input placeholder="Digite sua senha" class="txtForms" type="password" name="senha" value="" /> 
+	<img class="imgLapis" src="@{'public/imagens/imglapisEditar.png'}">
+	<span class="vermelho">#{error 'usuario.senha' /}</span>
+</div>
+<br/>
+	<h4 class="h4Senha">Senha</h4>
+<div class="divForm6">
+	<input placeholder="Confirme sua senha" class="txtForms" type="password" name="usuario.confirmacaoSenha" value="" />
+	<img class="imgLapis" src="@{'public/imagens/imglapisEditar.png'}">
+</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<button class="botaoLogar" id="desaparece"><h4 class="h4Button">Salvar Edição</h4></button>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+	function previewImagem(){
+		var imagem = document.querySelector('input[name=foto]').files[0];
+		var preview = document.querySelector('img[id=imgPerfil]');
+		
+		var reader = new FileReader();
+		
+		reader.onloadend = function(){
+			preview.src = reader.result;
+		}
+
+		if(imagem){
+			reader.readAsDataURL(imagem);
+		}else{
+			preview.src = "";
+		}
+	}
+
+</script>
+	
+	
+	</form>
+
+
+
+
+</body>
+</html>
